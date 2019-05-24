@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Presentation: GitLab to Azure auto-deploy</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Gudea&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/reveal.min.css" />
+    <link rel="stylesheet" href="css/theme/black.css" />
+    <link rel="stylesheet" href="lib/css/monokai.css" />
+    <link rel="stylesheet" href="css/presentation.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <footer
+          style="opacity: 0.6; position: absolute; left: 2px; bottom: 2px;"
+        >
+          <img
+            src="assets/infi-con-2019.png"
+            alt="INFI-CON 2019, Maandag 27 mei"
+            style="max-width: 4em;"
+          />
+        </footer>
+        <section>
+          <h1>GitLab to Azure auto-deploy</h1>
+          <p>Sander Vink</p>
+          <p>INFI-CON 2019, May 27th</p>
+        </section>
+
+        <section data-transition="slide">
+          <h2>Deployment in the good old days</h2>
+          <section>
+            <p>
+              <img
+                src="assets/UltraEdit.png"
+                alt="UltraEdit logo"
+                style="max-width: 256px;"
+                class="transparent"
+              />
+              <span style="min-width: 2em;">&nbsp;</span>
+              <img
+                src="assets/TextWrangler.png"
+                alt="TextWrangler logo"
+                style="max-width: 256px;"
+                class="transparent"
+              />
+            </p>
+          </section>
+          <section><p>Open/save files over FTP;</p></section>
+          <section><p>Or over FTPS;</p></section>
+          <section><p>Or was it SFTP?</p></section>
+          <section>
+            <p>
+              <img src="assets/ChildConfused.jpg" alt="Confused child" />
+            </p>
+          </section>
+          <section><p>Right... they exist both!</p></section>
+          <section><p>FTPS: FTP over SSL, with TLS support</p></section>
+          <section>
+            <p>SFTP: SSH FTP, like SCP (but different)</p>
+          </section>
+        </section>
+
+        <section data-transition="slide">
+          <h2>So FTP works, right?</h2>
+          <section><p>Well... sure!</p></section>
+          <section><p>But...</p></section>
+          <section>
+            <p>
+              <img
+                src="assets/GunDrawingFlowers.png"
+                alt="Gun drawing with flowers"
+              />
+            </p>
+          </section>
+          <section>
+            <p>
+              <img
+                src="assets/CarCollisionWithHouse.jpg"
+                alt="Car collision with house"
+              />
+            </p>
+          </section>
+          <section>
+            <p>
+              <img
+                src="assets/LittleBoyFrustrated.jpg"
+                alt="Little boy frustrated"
+              />
+            </p>
+          </section>
+        </section>
+
+        <section data-transition="slide">
+          <h2>Then came version control</h2>
+          <section>
+            <ul>
+              <li>CVS</li>
+              <li>Subversion</li>
+              <li>Git</li>
+            </ul>
+          </section>
+          <section>
+            <p>
+              <img
+                src="assets/GitBranchesIntroduction.svg"
+                alt="Git branches introduction"
+              />
+            </p>
+          </section>
+          <section>
+            <p>
+              <img src="assets/TrumpItsGreat.jpg" alt="Trump, it's great" />
+            </p>
+          </section>
+          <section>
+            <p>Well... it's <em>better</em>, but not great yet!</p>
+          </section>
+          <section>
+            <p>
+              <img
+                src="assets/TripAndFall.png"
+                alt="Trip and fall"
+                class="transparent"
+              />
+            </p>
+          </section>
+        </section>
+
+        <section data-transition="slide">
+          <h2>Let's automate things</h2>
+          <section>
+            <p>You have probably heard of CI & CD, right?</p>
+          </section>
+          <section>
+            <p>You know... stuff like:</p>
+            <ul>
+              <li>Continuous Integration</li>
+              <li>Continuous Delivery</li>
+              <li>Continuous Deployment</li>
+            </ul>
+          </section>
+          <section>
+            <p>So basically we want to:</p>
+            <ul>
+              <li>build our software,</li>
+              <li>test our software,</li>
+              <li>and deploy our software</li>
+            </ul>
+            <p>... automatically!</p>
+          </section>
+          <section>
+            <p>We can use GitLab Pipelines for that</p>
+          </section>
+        </section>
+
+        <section data-transition="slide">
+          <h2>Pipeline configuration</h2>
+          <section>
+            <p>Pipelines are defined in the <code>.gitlab-ci.yml</code> file</p>
+          </section>
+          <section>
+            <p>Jobs are the basic configuration component</p>
+          </section>
+          <section>
+            <p>
+              <img src="assets/JobExample.png" alt="Job example" />
+            </p>
+          </section>
+          <section>
+            <p>Stages are defined using the <codes>stages</codes> keyword</p>
+          </section>
+          <section>
+            <p>
+              <img src="assets/StagesExample.png" alt="Stages example" />
+            </p>
+          </section>
+          <section>
+            <p>By default the listed stages are executed in order</p>
+          </section>
+          <section>
+            <p>
+              <img
+                src="assets/PipelineExample.png"
+                alt="GitLab Pipeline example"
+              />
+            </p>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+      Reveal.initialize({
+        slideNumber: true,
+        history: true,
+        width: 1920,
+        height: 1080,
+        transition: 'none',
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/zoom-js/zoom.js' },
+          { src: 'plugin/highlight/highlight.js', async: true },
+        ],
+      });
+    </script>
+  </body>
+</html>
