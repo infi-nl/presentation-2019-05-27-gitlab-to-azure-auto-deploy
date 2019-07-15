@@ -35,6 +35,10 @@
   flex: 1;
 }
 
+.reveal section img {
+  max-height: 90vh;
+}
+
 .reveal section img.transparent {
   background: transparent;
   border: none;
